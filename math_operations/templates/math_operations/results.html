@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment #3 - Result</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,.1);
+            max-width: 800px;
+            width: 100%;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        p {
+            margin-left: 20px;
+            font-size: 16px;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Assignment #3</h1>
+        <h2>Python Script Result</h2>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        <h3>Original Values:</h3>
+        <p>x: {{ original_x }}<br>y: {{ original_y }}<br>z: {{ original_z }}</p>
+        <h3>Calculation Steps:</h3>
+        {% for step in steps %}
+            <p>{{ step.description }}: {{ step.value }}</p>
+        {% endfor %}
+        <h3>Result: x + y + z is: {{ final_x }} + {{ original_y }} + {{ original_z }} = {{ final_result }}</h3>
+        <a href="{% url 'math_form' %}">Go Back</a>
+    </div>
+</body>
+</html>
